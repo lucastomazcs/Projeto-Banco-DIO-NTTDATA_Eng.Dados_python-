@@ -15,7 +15,6 @@ def menu():
     return input(textwrap.dedent(menu))
 
 
-# ==================== OPERAÇÕES ====================
 
 def depositar(saldo, valor, extrato, /):
     if valor > 0:
@@ -47,12 +46,11 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
 
 def exibir_extrato(saldo, extrato):
     print("Extrato".center(30, "-"))
-    print("Não foram realizadas movimentações." if not extrato else extrato)
+    print("Não foram realizadas movimentações na conta." if not extrato else extrato)
     print(f"Saldo: R$ {saldo:.2f}")
     print("-" * 30)
 
 
-# ==================== USUÁRIOS ====================
 
 def novo_usuario(usuarios):
     cpf = input("Informe o CPF (somente números): ")
@@ -65,7 +63,7 @@ def novo_usuario(usuarios):
 
     nome = input("Nome completo: ")
     data_nascimento = input("Data de nascimento (dd-mm-aaaa): ")
-    endereco = input("Endereço (logradouro, nro - bairro - cidade/UF): ")
+    endereco = input("Endereço (logradouro, numero - bairro - cidade/UF): ")
 
     usuarios.append({
         "nome": nome,
@@ -77,7 +75,6 @@ def novo_usuario(usuarios):
     print("Usuário criado com sucesso!")
 
 
-# ==================== CONTAS ====================
 
 def criar_conta(agencia, numero_conta, usuarios, contas):
     cpf = input("Informe o CPF do usuário: ")
@@ -85,7 +82,7 @@ def criar_conta(agencia, numero_conta, usuarios, contas):
     usuario = next((u for u in usuarios if u["cpf"] == cpf), None)
 
     if not usuario:
-        print("Usuário não encontrado. Crie o usuário primeiro.")
+        print("Usuário não encontrado. Primeiramente crie o usuario")
         return
 
     contas.append({
@@ -112,7 +109,6 @@ def listar_contas(contas):
         print(textwrap.dedent(linha))
 
 
-# ==================== MAIN ====================
 
 def main():
     saldo = 0
